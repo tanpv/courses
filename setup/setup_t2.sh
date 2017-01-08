@@ -15,8 +15,10 @@ elif [ $region = "us-east-1" ]; then
   export ami="ami-9c5b438b" # Virginia
 else
   echo "Only us-west-2 (Oregon), eu-west-1 (Ireland), and us-east-1 (Virginia) are currently supported"
-  exit 1
+#  exit 1
 fi
+
+ami="ami-f8fd5998"
 
 export vpcId=`aws ec2 create-vpc --cidr-block 10.0.0.0/28 --query 'Vpc.VpcId' --output text`
 aws ec2 create-tags --resources $vpcId --tags --tags Key=Name,Value=$name
